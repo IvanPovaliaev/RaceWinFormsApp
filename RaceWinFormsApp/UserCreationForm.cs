@@ -9,7 +9,7 @@ namespace RaceWinFormsApp
         public UserCreationForm()
         {
             InitializeComponent();
-            playerNameTextBox.Text = StaticData.Player is null ? "NoName" : StaticData.Player.Name;
+            playerNameTextBox.Text = StaticData.Player?.Name ?? "NoName";
             if (StaticData.Player is null) returnButton.Text = "Exit";
         }
 
