@@ -6,11 +6,16 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>disable</ImplicitUsings>
+    <ApplicationIcon>Race.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="help.chm" />
     <None Remove="Sounds\CoinCollectSound.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Race.ico" />
   </ItemGroup>
 
   <ItemGroup>
