@@ -14,8 +14,7 @@ namespace RaceWinFormsApp
         public static string Serialize<T>(List<T> values)
         {
             var jsonData = JsonConvert.SerializeObject(values, Formatting.Indented);
-            var encryptedJsonData = AESEncryptionProvider.EncryptString(jsonData);
-            return encryptedJsonData;
+            return AESEncryptionProvider.EncryptString(jsonData);
         }
     }
 }

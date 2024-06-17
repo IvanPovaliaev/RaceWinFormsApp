@@ -56,7 +56,7 @@ namespace RaceWinFormsApp
         {
             byte[] aesKey;
 
-            if (!File.Exists(keysPath))
+            if (!FileProvider.Exists(keysPath))
             {
                 using (var aes = Aes.Create())
                 {
