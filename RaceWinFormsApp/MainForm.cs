@@ -20,5 +20,8 @@ namespace RaceWinFormsApp
             StaticData.Player = new Player(Properties.Settings.Default.LastPlayerName);
             WinFormsProvider.OpenChildForm(new MenuForm());
         }
+
+        private void MainForm_Resize(object sender, System.EventArgs e) => CenterToScreen();
+
     }
 }

@@ -60,6 +60,7 @@ namespace RaceWinFormsApp
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Race";
             Load += MainForm_Load;
+            Resize += MainForm_Resize;
             ResumeLayout(false);
         }
 
