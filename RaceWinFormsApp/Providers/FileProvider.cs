@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 
@@ -9,8 +8,9 @@ namespace RaceWinFormsApp
     {
         private static void CreateFile(string filePath)
         {
-            var dirPath = new DirectoryInfo(Path.GetDirectoryName(filePath));
-            if (!dirPath.Exists) dirPath.Create();
+            var dirPath = string.IsNullOrEmpty(Path.GetDirectoryName(filePath)) ? "." : Path.GetDirectoryName(filePath);
+            var dirInfo = new DirectoryInfo(dirPath);
+            if (!dirInfo.Exists) dirInfo.Create();
             if (!File.Exists(filePath)) File.Create(filePath).Close();
         }
         public static void Replace(string filePath, string content)
@@ -32,16 +32,7 @@ namespace RaceWinFormsApp
                 File.WriteAllText(filePath, string.Empty);
         }
         public static bool Exists(string filePath) => File.Exists(filePath);
-        public static void Save<T>(string filePath, List<T> dataList)
-        {
-            if (dataList.Count == 0)
-            {
-                Clear(filePath);
-                return;
-            }
-            var jsonData = JsonConvert.SerializeObject(dataList, Formatting.Indented);
-            Replace(filePath, jsonData);
-        }
+        public static void Save(string filePath, string fileData) => Replace(filePath, fileData);
         public static void ExportCollectionExcel<T>(string filePath, string sheetName, IEnumerable<T> collection)
         {
             using (var workbook = new XLWorkbook())

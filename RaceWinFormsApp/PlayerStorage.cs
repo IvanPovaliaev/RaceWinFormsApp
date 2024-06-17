@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace RaceWinFormsApp
 {
@@ -14,14 +13,15 @@ namespace RaceWinFormsApp
             }
 
             var fileData = FileProvider.GetContent(filePath);
-            var userResults = JsonConvert.DeserializeObject<List<Player>>(fileData);
+            var userResults = JsonProvider.Deserialize<Player>(fileData);
             return userResults;
         }
         public static void Save(Player user)
         {
             var usersResults = GetAll();
             usersResults.Add(user);
-            FileProvider.Save(filePath, usersResults);
+            var jsonData = JsonProvider.Serialize(usersResults);
+            FileProvider.Save(filePath, jsonData);
         }
         public static void Clear() => FileProvider.Clear(filePath);        
     }
